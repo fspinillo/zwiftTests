@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "es2018",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": true,
+        "noImplicitAny": false,
+        "baseUrl": ".",
+        "types": ["node", "webdriverio", "@wdio/sync", "@wdio/mocha-framework"]
+    },
+    "paths": {
+        "*": [ "./*" ],
+        "src/*": ["./src/*"]
+    },
+    "include": [
+         "./specs/**/*.ts",
+         "./pages/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
