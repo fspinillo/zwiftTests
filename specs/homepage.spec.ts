@@ -3,6 +3,7 @@ import { home } from '../pages'
 describe('Homepage', () => {
     before('Load homepage', () => {
         browser.url('./')
+        home.checkForCookieConsent()
         browser.waitUntil(() => {
             const state = browser.execute(() =>{
                 return document.readyState

@@ -1,71 +1,43 @@
 class events {
 
-    public get filterButton() {
-        return $('//button[@class="filter-toggle"]')
-    }
-
-    public get filterAllSports() {
-        return $('//button[@value="all"]')
-    }
-
-    public get filterCycling() {
-        return $('//button[@value="CYCLING"]')
-    }
-
-    public get filterRunning() {
-        return $('//button[@value="RUNNING"]')
-    }
-
-    public get allIntensities() {
-        return $('//button[@value="all"][text()="All Intensities"]')
-    }
-
-    public get intensityA() {
-        return $('//button[@value="1"][text()="A"]')
-    }
-
-    public get intensityB() {
-        return $('//button[@value="2"][text()="B"]')
-    }
-
-    public get intensityC() {
-        return $('//button[@value="3"][text()="C"]')
-    }
-
-    public get intensityD() {
-        return $('//button[@value="4"][text()="D"]')
-    }
-
-    public get intensityE() {
-        return $('//button[@value="5"][text()="E (Open)"]')
-    }
-
-    public get allTimes() {
-        return $('//button[@value="all"][text()="All Start Times"]')
-    }
-
-    public get morningTime() {
-        return $('//button[@value="morning"]')
-    }
-
-    public get afternoonTime() {
-        return $('//button[@value="afternoon"]')
-    }
-
-    public get eveningTime() {
-        return $('//button[@value="evening"]')
-    }
-
-    public get nightTime() {
-        return $('//button[@value="night"]')
-    }
-
-    public get applyFilter() {
-        return $('//button[@class="apply-button"]')
+    public get noEventsHeader() {
+        return $('//div[contains(text(),"No results")]')
     }
 
     public get eventTitleHeader() {
         return $('//div[@class="tab-listing"]')
+    }
+
+    public get allEventsTitles() {
+        return $$('//div[@class="tab-listing"]')
+    }
+
+    public get sportsType() {
+        return $('//span[@class="map-sport-type"]')
+    }
+
+    public get allSportsType() {
+        return $$('//span[@class="map-sport-type"]')
+    }
+
+    public get intensityA() {
+        return $$('//div[@data-label="1"][@class="group-label"]')
+    }
+
+    public get intensityB() {
+        return $$('//div[@data-label="2"][@class="group-label"]')
+    }
+
+    public get intensityC() {
+        return $$('//div[@data-label="3"][@class="group-label"]')
+    }
+
+    public get intensityD() {
+        return $$('//div[@data-label="4"][@class="group-label"]')
+    }
+
+    public get intensityE() {
+        return $$('//div[@data-label="5"][@class="group-label"]')
     }
 }
 

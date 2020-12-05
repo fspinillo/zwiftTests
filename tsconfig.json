@@ -8,7 +8,7 @@
         "removeComments": true,
         "noImplicitAny": false,
         "baseUrl": ".",
-        "types": ["node", "webdriverio", "@wdio/sync", "expect-webdriverio", "mocha"]
+        "types": ["node", "@wdio/sync", "expect-webdriverio", "mocha"]
     },
     "paths": {
         "*": [ "./*" ],
