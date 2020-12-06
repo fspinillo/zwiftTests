@@ -25,7 +25,6 @@ describe('Events', () => {
             filter.eveningTime.click()
             filter.pickIntensity('C')
             filter.applyFilter.click()
-            browser.debug()
             if(events.noEventsHeader.isDisplayed()) {
                 filteredEvents = 0
             } else {
