@@ -16,11 +16,35 @@ describe('Events', () => {
     })
 
     describe('Filter', () => {
-        it('Perform filter', () => {
-            const initialEvents = events.allEventsTitles.length
-            let filteredEvents: any;
+        beforeEach('Reset filter', () => {
             filter.filterButton.click()
             filter.resetFilter.click()
+        })
+        it('Filter for cycling', () => {
+            let nonCyclingEvents: any;
+            filter.filterCycling.click()
+            filter.applyFilter.click()
+            if(events.noEventsHeader.isDisplayed()) {
+                nonCyclingEvents = 0
+            } else {
+                nonCyclingEvents = events.allSportsType.filter(sports => sports.getText() != "CYCLING")
+            }
+            expect(nonCyclingEvents.length).toEqual(0)
+        })
+        it('Filter for running', () => {
+            let nonRunningEvents: any;
+            filter.filterRunning.click()
+            filter.applyFilter.click()
+            if(events.noEventsHeader.isDisplayed()) {
+                nonRunningEvents = 0
+            } else {
+                nonRunningEvents = events.allSportsType.filter(sports => sports.getText() != "RUNNING")
+            }
+            expect(nonRunningEvents.length).toEqual(0)
+        })
+        it('Filter for running, evening, C intensity', () => {
+            const initialEvents = events.allEventsTitles.length
+            let filteredEvents: any;
             filter.filterRunning.click()
             filter.eveningTime.click()
             filter.pickIntensity('C')
