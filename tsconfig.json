@@ -1,7 +1,8 @@
 {
     "compilerOptions": {
         "module": "CommonJS",
-        "target": "es2018",
+        "target": "es2019",
+        "sourceMap": false,
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
