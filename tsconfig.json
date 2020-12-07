@@ -9,7 +9,7 @@
         "removeComments": true,
         "noImplicitAny": false,
         "baseUrl": ".",
-        "types": ["node", "@wdio/sync", "expect-webdriverio", "mocha"]
+        "types": ["node", "@wdio/sync", "expect-webdriverio", "@wdio/mocha-framework", "@wdio/allure-reporter"]
     },
     "paths": {
         "*": [ "./*" ],

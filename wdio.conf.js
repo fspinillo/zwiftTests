@@ -1,3 +1,8 @@
+const allure = require('allure-commandline');
+const fs = require('fs-extra');
+const rimraf = require('rimraf')
+const path = require('path');
+
 module.exports.config = {
     //
     // ====================
@@ -47,7 +52,7 @@ module.exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -134,10 +139,13 @@ module.exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec'],
-
-
-    
+    reporters: ['spec',
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: true,
+        }],
+    ],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -159,8 +167,14 @@ module.exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+        const historyPath = path.join(process.cwd(), '/allure-report/history')
+        const resultsPath = path.join(process.cwd(), '/allure-results/history')
+        if(fs.pathExistsSync(historyPath)) {
+            fs.copySync(historyPath, resultsPath)
+        }
+        rimraf(path.join(process.cwd(), '/allure-results/*.xml'), err => { if(err) { console.log(err)}; });
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -267,8 +281,18 @@ module.exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function(exitCode, config, capabilities, results) {
+            var generation = allure(['generate', 'allure-results', '--clean']);
+            const reportError = new Error('Could not generate Allure report')
+            return new Promise((resolve, reject) => {
+                generation.on('exit', function(exitCode) {
+                    if (exitCode !== 0) {
+                        return reject(reportError)
+                    }
+                    resolve()
+                });
+            })
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {String} oldSessionId session ID of the old session
