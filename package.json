@@ -6,7 +6,9 @@
   "scripts": {
     "test:chrome": "npx wdio wdio.chrome.js",
     "test:firefox": "npx wdio wdio.firefox.js",
-    "test:headless": "npx wdio wdio.headless.js"
+    "test:headless": "npx wdio wdio.headless.js",
+    "report:make": "./node_modules/allure-commandline/bin/allure generate allure-results --clean",
+    "report:open": "./node_modules/allure-commandline/bin/allure open allure-report/"
   },
   "keywords": [],
   "author": "",
@@ -17,13 +19,18 @@
     "@babel/preset-env": "^7.12.7",
     "@babel/register": "^7.12.1",
     "@types/mocha": "^8.0.4",
+    "@wdio/allure-reporter": "^6.8.1",
     "@wdio/cli": "^6.10.5",
     "@wdio/local-runner": "^6.10.5",
     "@wdio/mocha-framework": "^6.10.4",
     "@wdio/selenium-standalone-service": "^6.10.4",
     "@wdio/spec-reporter": "^6.8.1",
     "@wdio/sync": "^6.10.4",
+    "allure-commandline": "^2.13.0",
     "chromedriver": "^87.0.1",
+    "fs-extra": "^9.0.1",
+    "install": "^0.13.0",
+    "rimraf": "^3.0.2",
     "ts-node": "^9.1.0",
     "typescript": "^4.1.2",
     "wdio-chromedriver-service": "^6.0.4"
