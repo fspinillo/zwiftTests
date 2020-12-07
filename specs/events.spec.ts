@@ -5,7 +5,7 @@ describe('Events', () => {
     before('Load events page', () => {
         browser.url('./')
         home.checkForCookieConsent()
-        menu.events.click()
+        menu.openEventPage()
         browser.waitUntil(() => {
             const state = browser.execute(() =>{
                 return document.readyState
