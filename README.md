@@ -1,3 +1,6 @@
+## About
+This test framework was built using [WebdriverIO](https://webdriver.io) which is a NodeJS library for using Selenium. It was written with a mix of Javscript and Typescript, with all libraries used within the test found on NPM. It's targeting Firefox and Chrome to handle the most compatibility amongst operating systems.
+
 ## Getting Started
 
 ### Prerequisites
